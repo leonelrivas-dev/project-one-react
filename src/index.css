@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+html,
+body,
+#roott {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Nunito Sans Variable", sans-serif;
+}
