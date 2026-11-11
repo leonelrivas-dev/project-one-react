@@ -1,4 +1,5 @@
 import type { CreateEventRequest } from "@/features/events/types/event.types";
+import { createUniqueSlug } from "@/lib/slug";
 import {
   Button,
   Calendar,
@@ -39,7 +40,6 @@ export function EventForm({
   submitLabel = "Crear Evento",
 }: EventFormProps) {
   const [name, setName] = useState(initialValues?.name ?? "");
-  const [slug, setSlug] = useState(initialValues?.slug ?? "");
   const [eventDate, setEventDate] = useState<DateValue | null>(
     initialValues?.eventDate ?? null,
   );
@@ -55,7 +55,7 @@ export function EventForm({
 
     await onSubmit({
       name: name.trim(),
-      slug: slug.trim(),
+      slug: initialValues?.slug ?? createUniqueSlug(name),
       eventDate: eventDate.toString(),
       eventTime: eventTime.toString(),
       venue: venue.trim(),
@@ -71,17 +71,6 @@ export function EventForm({
           onChange={(event) => setName(event.target.value)}
           placeholder="Ej. Boda de Katherine y Leonel"
           required
-        />
-      </TextField>
-
-      <TextField>
-        <Label>Slug</Label>
-        <Input
-          value={slug}
-          onChange={(event) => setSlug(event.target.value)}
-          placeholder="boda-katherine-leonel"
-          required
-          disabled={!!initialValues}
         />
       </TextField>
 
@@ -129,7 +118,11 @@ export function EventForm({
           </DatePicker.Popover>
         </DatePicker>
 
-        <TimeField value={eventTime ?? undefined} onChange={setEventTime}>
+        <TimeField
+          value={eventTime ?? undefined}
+          onChange={setEventTime}
+          hourCycle={12}
+        >
           <Label>Hora</Label>
           <TimeField.Group>
             <TimeField.Input>

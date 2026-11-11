@@ -7,7 +7,7 @@ interface SidebarProps {
 
 export function Sidebar({ onLogout }: SidebarProps) {
   return (
-    <aside className="flex w-64 shrink-0 flex-col bg-[#11175f] text-white lg:flex">
+    <aside className="flex h-full w-64 shrink-0 flex-col overflow-y-auto bg-[#11175f] text-white lg:flex">
       {/* Logo */}
       <div className="flex h-24 items-center justify-center px-6">
         <img

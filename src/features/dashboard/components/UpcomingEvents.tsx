@@ -1,4 +1,5 @@
 import { UpcomingEventItem } from "@/features/dashboard/components/UpcomingEventItem";
+import { Link } from "react-router-dom";
 
 export function UpcomingEvents() {
   return (
@@ -9,12 +10,12 @@ export function UpcomingEvents() {
           <p className="">Tus eventos más próximos.</p>
         </div>
 
-        <a
-          href="/events"
+        <Link
+          to="/events"
           className="text-sm font-semibold text-[#5428e5] hover:text-[#4320c5]"
         >
           Ver todos
-        </a>
+        </Link>
       </div>
 
       <div className="divide-y divide-[#eeeef4]">
