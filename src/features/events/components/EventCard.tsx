@@ -1,6 +1,8 @@
 import type { Event } from "@/features/events/types/event.types";
+import { formatTime12Hour } from "@/lib/time";
 import { Calendar, Clock, Ellipsis, LocationArrow } from "@gravity-ui/icons";
 import { Button, Menu, Popover } from "@heroui/react";
+import { Link } from "react-router-dom";
 
 interface EventCardProps {
   event: Event;
@@ -68,7 +70,7 @@ export function EventCard({ event, onEdit, onDelete }: EventCardProps) {
 
         <div className="flex items-center gap-3 text-sm text-[#8589a8]">
           <Clock className="size-4 shrink-0" />
-          <span className="capitalize">{event.eventTime}</span>
+          <span className="capitalize">{formatTime12Hour(event.eventTime)}</span>
         </div>
 
         <div className="flex items-center gap-3 text-sm text-[#8589a8]">
@@ -76,6 +78,13 @@ export function EventCard({ event, onEdit, onDelete }: EventCardProps) {
           <span className="capitalize">{event.venue}</span>
         </div>
       </div>
+
+      <Link
+        to={`/events/${event.id}/invitations`}
+        className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#5428e5]/10 px-4 py-2.5 text-sm font-bold text-[#5428e5] transition-colors hover:bg-[#5428e5]/15"
+      >
+        Gestionar invitaciones
+      </Link>
     </article>
   );
 }

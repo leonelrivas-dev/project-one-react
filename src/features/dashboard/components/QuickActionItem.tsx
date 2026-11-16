@@ -1,4 +1,5 @@
 import type React from "react";
+import { Link } from "react-router-dom";
 
 interface QuickActionItemProps {
   href: string;
@@ -16,8 +17,8 @@ export function QuickActionItem({
   iconClassName,
 }: QuickActionItemProps) {
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       className="flex items-center gap-4 rounded-xl border border-[#e9e9f2] p-4 transition-all hover:border-[#5428e5]/30 hover:bg-[#5428e5]/5"
     >
       <div
@@ -30,6 +31,6 @@ export function QuickActionItem({
         <p className="text-sm font-bold text-[#11175f]">{title}</p>
         <p className="mt-0.5 text-xs text-[#8589a8]">{description}</p>
       </div>
-    </a>
+    </Link>
   );
 }

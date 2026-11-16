@@ -3,8 +3,8 @@
 
 html,
 body,
-#roott {
-    min-height: 100%;
+#root {
+    height: 100%;
 }
 
 body {
